@@ -11,7 +11,7 @@ engine.setProperty('rate', 150)  # 设置语速，可选调
 model = YOLO("yolov8n.pt")
 
 # 打开摄像头
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 if not cap.isOpened():
     print("❌ 无法打开摄像头")
