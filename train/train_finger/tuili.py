@@ -1,6 +1,7 @@
 from transformers import ViTForImageClassification, ViTImageProcessor
 from PIL import Image
 import os
+import shutil
 
 # 加载微调后的模型和处理器
 model = ViTForImageClassification.from_pretrained("./vit_finetune")
@@ -18,19 +19,20 @@ def predict(image_path):
 img_path = "IMG_0042.jpg"  # 替换为你的测试图片
 
 
-filepath = "dataset/train/chair/"
+filepath = "dataset/val/no_figure/"
+filepath = "test2/"
 for filename in os.listdir(filepath):
     print(filename)
+    src_path = os.path.join(filepath, filename)
+    dst_path_yes = os.path.join("test-yes/", filename)
+    dst_path_no = os.path.join("test-no/", filename)
 
-    pred = predict(os.path.join(filepath, filename))
+    pred = predict(src_path)
     if pred == 0:
-        print("✅ 是目标椅子")
-    else:
-        print("❌ 不是目标椅子")
+        print("✅ 是目标指纹")
+        shutil.copy2(src_path, dst_path_yes)
 
-for i in range(10):
-    pred = predict(img_path)
-    if pred == 0:
-        print("✅ 是目标椅子")
     else:
-        print("❌ 不是目标椅子")
+        print("❌ 不是目标指纹")
+        shutil.copy2(src_path, dst_path_no)
+

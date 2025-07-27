@@ -1,0 +1,3 @@
+text,label
+Jul 26 12:35:00 myhost sudo[5678]: user executed command ls,0
+Jul 26 12:35:10 myhost cron[9012]: Job completed,2
