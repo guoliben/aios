@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/deepseek-coder-1.3b-instruct" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/video-gen/Text2Video-Zero" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/video-gen/TextToVideo-Converter" vcs="Git" />
   </component>
 </project>
