@@ -30,7 +30,6 @@ def get_data(waypath):
     else:
         echo_buffer = data.tolist()
     return data, samplerate, echo_buffer
-    print(data)
 
 
 

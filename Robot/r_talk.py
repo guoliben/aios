@@ -1,21 +1,34 @@
 import subprocess, threading
+import time
+# say_process = None
+# lock = threading.Lock()
+#
+# def Talk_1(text):
+#     if not text.strip():
+#         return
+#     print(f"🤖 回答?：{text}")
+#     global say_process
+#     with lock:
+#         # 如果有旧的语音进程，在开始新朗读前终止
+#         if say_process and say_process.poll() is None:
+#             say_process.terminate()
+#             say_process = None
+#
+#         print(f"🤖 回答：{text}")
+#         say_process = subprocess.Popen(['say', text])
+#
 
-say_process = None
-lock = threading.Lock()
-
-def Talk(text):
+def Talk(text, chosen_voice):
+    # if not text.strip():
+    #     return
+    # print(f"🤖 回答?：{text}")
+    # subprocess.Popen(['say', text])
+    #
     if not text.strip():
         return
-    print(f"🤖 回答?：{text}")
-    global say_process
-    with lock:
-        # 如果有旧的语音进程，在开始新朗读前终止
-        if say_process and say_process.poll() is None:
-            say_process.terminate()
-            say_process = None
-
-        print(f"🤖 回答：{text}")
-        say_process = subprocess.Popen(['say', text])
+    print(f"🤖 回答：{text}")
+    subprocess.run(['say', text])  # ✅ 等待播报结束再继续
+    # subprocess.run(['say', '-v', chosen_voice, text])
 
 
 # from TTS.api import TTS

@@ -70,6 +70,11 @@ def Listen_to_me():
         print("🎤 正在聆听（说话后暂停自动识别）...")
         while True:
             rec_data = q.get()
+            # audio_np = np.frombuffer(rec_data, dtype=np.int16)
+            #
+            # # 播放
+            # sd.play(audio_np, samplerate=16000)
+            # sd.wait()
 
             # text = is_speech(rec_data)
             # if len(text) <= 0:
@@ -102,8 +107,8 @@ def Listen_to_me():
             # AEC
             try:
                 # print("回声降噪中...")
-                # cleaned = aec.cancel_echo(rec_frame, echo_frame)
-                cleaned = rec_frame
+                cleaned = aec.cancel_echo(rec_frame, echo_frame)
+                # cleaned = rec_frame
             except Exception as e:
                 print("AEC失败:", e)
                 continue
@@ -164,9 +169,9 @@ def is_speech(audio_bytes: bytes) -> str:
         partial = partial_result.get("partial", "").strip()
         return partial
 
-while True:
-    command = Listen_to_me()
-    Talk(command)
+# while True:
+#     command = Listen_to_me()
+#     Talk(command)
 
 # 示例使用
 # while True:

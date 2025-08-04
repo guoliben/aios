@@ -2,10 +2,11 @@ import requests
 
 # 聊天历史
 chat_history = [
-    {"role": "system", "content": "你是一个中文语音助手，请简洁回答用户的问题。把自己看做一个智能代理，可以具有自主意识，判断主人喜好，偏向，我是小爱同学 ，每次跟我说话都 先说小爱同学"}
+    {"role": "system", "content": "你是AI语音助手 每次回答问题简短，不要超过30个字 回答问题 不要用表情符号"}
 ]
 
-model_name = "qwen:0.5b"
+model_name = "qwen:1.8b"
+model_name = "gemma3:1b"
 
 def Chat_with_ollama(prompt):
     chat_history.append({"role": "user", "content": prompt})
@@ -22,4 +23,7 @@ def Chat_with_ollama(prompt):
 
     reply = response.json()["message"]["content"]
     chat_history.append({"role": "assistant", "content": reply})
-    return reply
+    return "小爱同学 ， " + reply
+
+
+# (p r_main.py &) && (p r_main.py &)
